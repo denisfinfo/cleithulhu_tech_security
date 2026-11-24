@@ -1,0 +1,6 @@
+# Bloqueia arquivos de variáveis de ambiente e segredos locais
+.env
+.env.local
+.env.production
+*.pem
+*.key
