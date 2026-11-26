@@ -1,7 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SecureSessionService {
-  
+
   final FlutterSecureStorage _storage = const FlutterSecureStorage(
     aOptions: AndroidOptions(
       encryptedSharedPreferences: true,
@@ -21,6 +21,15 @@ class SecureSessionService {
   Future<String?> getAuthToken() async {
     return await _storage.read(key: _tokenKey);
   }
+
+  Future<void> savePixSession(String pixData) async {
+    await _storage.write(key: _pixTokenKey, value: pixData);
+  }
+
+  Future<String?> getPixSession() async {
+    return await _storage.read(key: _pixTokenKey);
+  }
+
   Future<void> clearSession() async {
     await _storage.deleteAll();
   }
